@@ -9,7 +9,7 @@ import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:unittest/unittest.dart';
 import 'package:unittest/html_config.dart';
-import '../web/elements/demo_app.dart';
+import 'package:searchable_list/demo_app.dart';
 
 /**
  * A trivial test to get the analyzer plugged into this sample. See

@@ -1,0 +1,20 @@
+# Don't run any test-like files that show up in packages directories. It
+# shouldn't be necessary to run "pub install" in these packages, but if you do
+# it shouldn't break the tests.
+*/packages/*/*: Skip
+*/*/packages/*/*: Skip
+*/*/*/packages/*/*: Skip
+*/*/*/*/packages/*/*: Skip
+*/*/*/*/*/packages/*/*: Skip
+
+[ $runtime == vm ]
+*: Skip
+
+[ $compiler == dart2js ]
+test/*: Skip # only run build/ output tests with dart2js
+
+[ $compiler == dart2js && $mode == debug ]
+build/test/demo_app_test: Pass, Timeout
+
+[ $compiler == none && ($runtime == dartium || $runtime == ContentShellOnAndroid) ]
+test/demo_app_test: Pass, RuntimeError # Issue 18931
